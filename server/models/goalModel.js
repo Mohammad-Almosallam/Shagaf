@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const goalSchema = mongoose.Schema(
   {
-    //To know what goal belongs to what user.
+    //To know what goal belongs to what user. linking user object with goal
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

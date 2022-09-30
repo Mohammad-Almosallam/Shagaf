@@ -77,6 +77,8 @@ the user data. If it is not correct it will throw an error. */
 // @access  Private
 const getMe = asyncHandler(async (req, res) => {
   //req.user is the user that has been authenticated and went thru the authMiddleware
+  // console.log(req.user);
+  // console.log(req.body);
   const { _id, name, email } = await User.findById(req.user.id);
 
   res.status(200).json({
@@ -94,6 +96,7 @@ const generateToken = (id) => {
     expiresIn: "30d",
   });
 };
+
 module.exports = {
   registerUser,
   loginUser,
