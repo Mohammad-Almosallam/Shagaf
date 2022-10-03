@@ -12,7 +12,7 @@ function Hero() {
       <div className="logo">
         <Link to="/">amb</Link>
       </div>
-
+      
       <Link to="/login">
         <IoLogInOutline /> Login
       </Link>

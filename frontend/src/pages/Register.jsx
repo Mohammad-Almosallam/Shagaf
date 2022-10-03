@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { IoPersonOutline, IoLogInOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { IoPersonOutline } from "react-icons/io5";
+import { Link, useNavigate } from "react-router-dom";
+import { register } from "../auth/authService";
+import { toast } from "react-toastify";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -11,6 +13,7 @@ function Register() {
   });
 
   const { name, email, password, password2 } = formData;
+  const navigate = useNavigate();
 
   function handleChange(e) {
     setFormData((prevValue) => ({
@@ -19,8 +22,29 @@ function Register() {
     }));
   }
 
-  function handleOnSubmit(e) {
+  async function handleOnSubmit(e) {
     e.preventDefault();
+
+    if (password !== password2) {
+      toast.error("Passwords do not match");
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      };
+
+      const message = await register(userData);
+
+      if (message.status === 400) {
+        toast.error(message.data.message);
+      } else if (message.status === 201) {
+        toast.success("Registered!");
+        navigate("/");
+      } else {
+        toast.error(message.statusText);
+      }
+    }
   }
 
   return (
