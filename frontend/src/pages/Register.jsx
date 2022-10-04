@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IoPersonOutline } from "react-icons/io5";
+import { IoPersonOutline, IoChevronBackOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../auth/authService";
 import { toast } from "react-toastify";
@@ -60,65 +60,65 @@ function Register() {
 
   return (
     <Flex width={"100%"} h={"100vh"}>
-      <Box bg={"#999"} width={"50%"}>
+      <Box bg={"#F1ECE3"} width={"50%"}>
         <Spline scene="https://prod.spline.design/IW8nMmrQH9b-VJnB/scene.splinecode" />
       </Box>
       <Box w={"50%"} margin={"auto"}>
         <Flex flexDirection={"column"} p={"1"} m={"auto"} w={"400px"} gap={"2"}>
-          <Heading display={"flex"} gap={"2"} alignItems={"center"} mb={"2"}>
-            <IoPersonOutline /> Register
+          <Heading display={"flex"} gap={"2"} alignItems={"center"} mb={"5"}>
+            <IoPersonOutline /> تسجيل حساب جديد
           </Heading>
           <FormControl>
-            <FormLabel mb={"0"}>Name</FormLabel>
+            <FormLabel>الاسم</FormLabel>
             <Input
               type={"text"}
               className="input"
               id="name"
               name="name"
               value={name}
-              placeholder="Enter your name"
+              placeholder="ادخل الاسم"
               onChange={(e) => {
                 handleChange(e);
               }}
             />
           </FormControl>
           <FormControl>
-            <FormLabel mb={"0"}>Email</FormLabel>
+            <FormLabel>البريد الالكتروني</FormLabel>
             <Input
               type={"email"}
               className="input"
               id="email"
               name="email"
               value={email}
-              placeholder="Enter your email"
+              placeholder="ادخل البريد الالكتروني"
               onChange={(e) => {
                 handleChange(e);
               }}
             />
           </FormControl>
           <FormControl>
-            <FormLabel mb={"0"}>Password</FormLabel>
+            <FormLabel>كلمة المرور</FormLabel>
             <Input
               type={"password"}
               className="input"
               id="password"
               name="password"
               value={password}
-              placeholder="Enter your password"
+              placeholder="ادخل كلمة المرور"
               onChange={(e) => {
                 handleChange(e);
               }}
             />
           </FormControl>
           <FormControl>
-            <FormLabel mb={"0"}>Confirm password</FormLabel>
+            <FormLabel>تأكيد كلمة المرور</FormLabel>
             <Input
               type={"password"}
               className="input"
               id="password2"
               name="password2"
               value={password2}
-              placeholder="Confirm password"
+              placeholder="أعد إدخال كلمة المرور"
               onChange={(e) => {
                 handleChange(e);
               }}
@@ -129,15 +129,20 @@ function Register() {
             onClick={(e) => {
               handleOnSubmit(e);
             }}
-            colorScheme="blackAlpha"
-            variant="outline"
+            bg={"black"}
+            borderRadius={"0"}
+            colorScheme={""}
+            color={"white"}
+            variant="solid"
             width={"100%"}
             mt={"3"}
+            alignItems={"center"}
           >
-            Submit
+            الدخول
+            <IoChevronBackOutline />
           </Button>
           <Text>
-            have an account?<Link to={"/login"}> login</Link>
+            لديك حساب؟<Link to={"/login"}> سجل دخولك </Link>
           </Text>
         </Flex>
       </Box>
