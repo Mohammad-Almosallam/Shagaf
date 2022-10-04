@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { IoLogInOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../auth/authService";
+import { toast } from "react-toastify";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -9,6 +11,7 @@ function Login() {
   });
 
   const { email, password } = formData;
+  const navigate = useNavigate();
 
   function handleChange(e) {
     setFormData((prevValue) => ({
@@ -17,8 +20,24 @@ function Login() {
     }));
   }
 
-  function handleOnSubmit(e) {
+  async function handleOnSubmit(e) {
     e.preventDefault();
+
+    const userData = {
+      email,
+      password,
+    };
+
+    const message = await login(userData);
+
+    if (message.status === 400) {
+      toast.error(message.data.message);
+    } else if (message.status === 200) {
+      toast.success("Registered!");
+      navigate("/");
+    } else {
+      toast.error(message.statusText);
+    }
   }
 
   return (

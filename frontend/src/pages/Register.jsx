@@ -3,6 +3,17 @@ import { IoPersonOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../auth/authService";
 import { toast } from "react-toastify";
+import Spline from "@splinetool/react-spline";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Text,
+  Flex,
+  Box,
+  Heading,
+} from "@chakra-ui/react";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -48,22 +59,18 @@ function Register() {
   }
 
   return (
-    <div className="registerFormContainer">
-      <div className="formHeading">
-        <h1>
-          <IoPersonOutline /> Register
-        </h1>
-        <h4>Please create an account</h4>
-      </div>
-      <div className="formContainer">
-        <form
-          onSubmit={(e) => {
-            handleOnSubmit(e);
-          }}
-        >
-          <div className="form-group">
-            <label>Name</label>
-            <input
+    <Flex width={"100%"} h={"100vh"}>
+      <Box bg={"#999"} width={"50%"}>
+        <Spline scene="https://prod.spline.design/IW8nMmrQH9b-VJnB/scene.splinecode" />
+      </Box>
+      <Box w={"50%"} margin={"auto"}>
+        <Flex flexDirection={"column"} p={"1"} m={"auto"} w={"400px"} gap={"2"}>
+          <Heading display={"flex"} gap={"2"} alignItems={"center"} mb={"2"}>
+            <IoPersonOutline /> Register
+          </Heading>
+          <FormControl>
+            <FormLabel mb={"0"}>Name</FormLabel>
+            <Input
               type={"text"}
               className="input"
               id="name"
@@ -74,10 +81,10 @@ function Register() {
                 handleChange(e);
               }}
             />
-          </div>
-          <div className="form-group">
-            <label>Email</label>
-            <input
+          </FormControl>
+          <FormControl>
+            <FormLabel mb={"0"}>Email</FormLabel>
+            <Input
               type={"email"}
               className="input"
               id="email"
@@ -88,10 +95,10 @@ function Register() {
                 handleChange(e);
               }}
             />
-          </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input
+          </FormControl>
+          <FormControl>
+            <FormLabel mb={"0"}>Password</FormLabel>
+            <Input
               type={"password"}
               className="input"
               id="password"
@@ -102,10 +109,10 @@ function Register() {
                 handleChange(e);
               }}
             />
-          </div>
-          <div className="form-group">
-            <label>Confirm password</label>
-            <input
+          </FormControl>
+          <FormControl>
+            <FormLabel mb={"0"}>Confirm password</FormLabel>
+            <Input
               type={"password"}
               className="input"
               id="password2"
@@ -116,21 +123,25 @@ function Register() {
                 handleChange(e);
               }}
             />
-          </div>
-          <div>
-            <button type="submit" className="input submitBtn">
-              Submit
-            </button>
-          </div>
-          <div>
-            <p>
-              have an account?
-              <Link to={"/login"}>login</Link>
-            </p>
-          </div>
-        </form>
-      </div>
-    </div>
+          </FormControl>
+          <Button
+            type="submit"
+            onClick={(e) => {
+              handleOnSubmit(e);
+            }}
+            colorScheme="blackAlpha"
+            variant="outline"
+            width={"100%"}
+            mt={"3"}
+          >
+            Submit
+          </Button>
+          <Text>
+            have an account?<Link to={"/login"}> login</Link>
+          </Text>
+        </Flex>
+      </Box>
+    </Flex>
   );
 }
 

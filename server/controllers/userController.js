@@ -60,7 +60,7 @@ const loginUser = asyncHandler(async (req, res) => {
   /* This is checking if the user exists and if the password is correct. If it is correct it will return
 the user data. If it is not correct it will throw an error. */
   if (user && (await bcrypt.compare(password, user.password))) {
-    res.json({
+    res.status(200).json({
       _id: user.id,
       name: user.name,
       email: user.email,
