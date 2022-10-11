@@ -52,7 +52,7 @@ function Login() {
   }
 
   return (
-    <Flex width={"100%"} h={"100vh"}>
+    <Flex width={"100%"} h={"100vh"} flexDir={"row-reverse"}>
       <Box bg={"#F1ECE3"} width={"50%"}>
         <Spline scene="https://prod.spline.design/IW8nMmrQH9b-VJnB/scene.splinecode" />
       </Box>
@@ -98,7 +98,6 @@ function Login() {
               handleOnSubmit(e);
             }}
             bg={"black"}
-            borderRadius={"0"}
             colorScheme={""}
             color={"white"}
             variant="solid"
@@ -110,67 +109,11 @@ function Login() {
             <IoChevronBackOutline />
           </Button>
           <Text>
-            لديك حساب؟<Link to={"/register"}> سجل دخولك </Link>
+            ليس لديك حساب؟<Link to={"/register"}> سجل حساب جديد </Link>
           </Text>
         </Flex>
       </Box>
     </Flex>
-    // <div className="registerFormContainer">
-    //   <div className="formHeading">
-    //     <h1>
-    //       <IoLogInOutline /> Login
-    //     </h1>
-    //     <h4>Please Log in to set goals 🎯 </h4>
-    //   </div>
-    //   <div className="formContainer">
-    //     <form
-    //       onSubmit={(e) => {
-    //         handleOnSubmit(e);
-    //       }}
-    //     >
-    //       <div className="form-group">
-    //         <label>Email</label>
-    //         <input
-    //           type={"email"}
-    //           className="input"
-    //           id="email"
-    //           name="email"
-    //           value={email}
-    //           placeholder="Enter your email"
-    //           onChange={(e) => {
-    //             handleChange(e);
-    //           }}
-    //         />
-    //       </div>
-    //       <div className="form-group">
-    //         <label>Password</label>
-    //         <input
-    //           type={"password"}
-    //           className="input"
-    //           id="password"
-    //           name="password"
-    //           value={password}
-    //           placeholder="Enter your password"
-    //           onChange={(e) => {
-    //             handleChange(e);
-    //           }}
-    //         />
-    //       </div>
-
-    //       <div>
-    //         <button type="submit" className="input submitBtn">
-    //           Submit
-    //         </button>
-    //       </div>
-    //       <div>
-    //         <p>
-    //           Don't have an account?
-    //           <Link to={"/register"}>register</Link>
-    //         </p>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </div>
   );
 }
 

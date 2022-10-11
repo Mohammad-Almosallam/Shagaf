@@ -15,6 +15,13 @@ root.render(
         body: `'Cairo', sans-serif`,
         heading: `'Cairo', sans-serif`,
       },
+      breakpoints: {
+        sm: "320px",
+        md: "468px",
+        lg: "1160px",
+        xl: "1200px",
+        "2xl": "1536px",
+      },
     })}
   >
     <React.StrictMode>

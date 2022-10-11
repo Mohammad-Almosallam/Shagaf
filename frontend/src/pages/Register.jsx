@@ -59,8 +59,8 @@ function Register() {
   }
 
   return (
-    <Flex width={"100%"} h={"100vh"}>
-      <Box bg={"#F1ECE3"} width={"50%"}>
+    <Flex width={"100%"} h={"100vh"} flexDir={"row-reverse"}>
+      <Box bg={"#FEF5ED"} width={"50%"}>
         <Spline scene="https://prod.spline.design/IW8nMmrQH9b-VJnB/scene.splinecode" />
       </Box>
       <Box w={"50%"} margin={"auto"}>
@@ -130,7 +130,6 @@ function Register() {
               handleOnSubmit(e);
             }}
             bg={"black"}
-            borderRadius={"0"}
             colorScheme={""}
             color={"white"}
             variant="solid"
