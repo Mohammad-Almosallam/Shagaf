@@ -6,12 +6,14 @@ function StatsBox(props) {
     <Box
       width={{ lg: "30%", md: "45%", sm: "95%" }}
       padding={"4"}
-      className={"gl"}
+      className={"glass"}
       borderRadius={"25px"}
       boxShadow={"0px 0px 60px -15px rgba(0,0,0,0.1)"}
       display={"flex"}
       flexShrink={0}
       alignItems={"center"}
+      borderRightColor={props.color}
+      borderRightWidth={"6px"}
     >
       <Text
         bgColor={props.color}
@@ -27,7 +29,9 @@ function StatsBox(props) {
         {props.icon}
       </Text>
       <Box pr={"8"} lineHeight={"8"}>
-        <Text fontWeight={"500"}> {props.title} </Text>
+        <Text textColor={"gray.500"} fontWeight={"500"}>
+          {props.title}
+        </Text>
         <Text fontSize={"3xl"} fontWeight={"800"}>
           {props.value}
         </Text>

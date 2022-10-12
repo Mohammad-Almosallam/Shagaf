@@ -3,13 +3,15 @@ import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
 import { IoChevronBackOutline } from "react-icons/io5";
 import Emoji from "../Emoji";
 import GoalForm from "../GoalForm";
+import Goal from "../Goal";
 
 function IntroDashboard() {
-  const [goal, setGoal] = useState();
+  const [goalText, setGoalText] = useState("");
 
   function handleGoalInputChange(e) {
-    setGoal(e);
+    setGoalText(e);
   }
+
   function handleExitBtn() {
     return;
   }
@@ -20,7 +22,7 @@ function IntroDashboard() {
       display="flex"
       m={8}
       flexDir={"column"}
-      className={"gl"}
+      className={"glass"}
       borderRadius={"25px"}
       boxShadow={"0px 0px 60px -14px rgba(0,0,0,0.1)"}
       flex={"30%"}
@@ -34,8 +36,8 @@ function IntroDashboard() {
           onClick={(e) => {
             handleExitBtn(e);
           }}
-          color={"black"}
-          colorScheme={"blackAlpha"}
+          color={"red"}
+          colorScheme={"red"}
           variant="outline"
           alignItems={"center"}
         >
@@ -58,10 +60,10 @@ function IntroDashboard() {
       </Flex>
 
       <Box flexGrow={"8"} w={"100%"}>
-        <GoalForm change={handleGoalInputChange} goalText={goal} />
+        <GoalForm change={handleGoalInputChange} goalText={goalText} />
       </Box>
 
-      <Heading overflow={"scroll"}>{goal}</Heading>
+      <Goal goalText={goalText} />
     </Box>
   );
 }

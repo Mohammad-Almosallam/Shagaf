@@ -7,7 +7,12 @@ function Dashboard() {
   // function handleGoalSubmit(e) {}
 
   return (
-    <Flex h={"100vh"} flexDirection={{ sm: "column", lg: "row" }} w={"100%"}>
+    <Flex
+      h={"100vh"}
+      bgColor={"#fcfcfc"}
+      flexDirection={{ sm: "column", lg: "row" }}
+      w={"100%"}
+    >
       <IntroDashboard />
       <HeroDashboard />
     </Flex>

@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
 
 function Goal() {
-  return (
-    <div>Goal</div>
-  )
+  return <Box>
+    
+  </Box>;
 }
 
-export default Goal
+export default Goal;

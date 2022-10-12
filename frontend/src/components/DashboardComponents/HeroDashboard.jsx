@@ -1,11 +1,20 @@
-import React, { useState } from "react";
-import { Box, Heading } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { Box, Button, Heading } from "@chakra-ui/react";
 import StatsBox from "../StatsBox";
+import { useStopwatch } from "react-timer-hook";
+import TableStats from "../TableStats";
 
 function HeroDashboard() {
-  const [statsData, setData] = useState([{}]);
+  const [statsData, setData] = useState({
+    goalsNum: 27,
+    goalsDone: 15,
+    goalsRemain: 12,
+  });
+  const { seconds, minutes } = useStopwatch({ autoStart: true });
+  const [isOpen, setOpen] = useState(false);
+
   return (
-    <Box p={7} flex={"70%"}>
+    <Box mt={12} pr={7} flex={"70%"}>
       <Heading fontWeight={"500"} fontSize={"3xl"}>
         الإحصائيات:
       </Heading>
@@ -19,7 +28,9 @@ function HeroDashboard() {
         flexDirection={"row"}
         alignItems={"stretch"}
         gap={"7"}
-        p={8}
+        pt={8}
+        pb={8}
+        borderRadius="25px"
       >
         <StatsBox
           icon={"🎯"}
@@ -43,14 +54,22 @@ function HeroDashboard() {
           icon={"⏰"}
           color={"blue.100"}
           title={"الوقت منذ الدخول"}
-          value={"2:23"}
+          value={`${minutes}:${seconds}`}
         />
       </Box>
-
-      <Box mt={5} bgColor={"#F8F9FD"}>
+      <TableStats isOpen={isOpen} />
+      <Box mt={5}>
         <Heading fontWeight={"500"} fontSize={"3xl"}>
           الأهداف:
         </Heading>
+        <Button
+          onClick={() => {
+            setOpen((isOpen) => !isOpen);
+          }}
+        >
+          اظهر التقرير
+        </Button>
+
         {/* Goals Component */}
       </Box>
     </Box>
