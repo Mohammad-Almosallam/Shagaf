@@ -1,19 +1,25 @@
-import React, { useState } from "react";
-import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { Box, Button, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { IoChevronBackOutline } from "react-icons/io5";
-import Emoji from "../Emoji";
-import GoalForm from "../GoalForm";
-import Goal from "../Goal";
+import Emoji from "./Emoji";
+import GoalForm from "./GoalForm";
+import Goal from "./Goal";
+import { logout } from "../auth/authService";
+import { useNavigate } from "react-router-dom";
+import { getGoals } from "../auth/goalService";
 
-function IntroDashboard() {
+function IntroDashboard(props) {
   const [goalText, setGoalText] = useState("");
+
+  const navigate = useNavigate();
 
   function handleGoalInputChange(e) {
     setGoalText(e);
   }
 
   function handleExitBtn() {
-    return;
+    logout();
+    navigate("/login");
   }
 
   return (
@@ -22,12 +28,12 @@ function IntroDashboard() {
       display="flex"
       m={8}
       flexDir={"column"}
-      className={"glass"}
+      className={"glass scrollDisable"}
       borderRadius={"25px"}
       boxShadow={"0px 0px 60px -14px rgba(0,0,0,0.1)"}
       flex={"30%"}
     >
-      <Flex justifyContent={"space-between"} alignItems={"center"}>
+      <Flex justifyContent={"space-between"} mb={"2rem"} alignItems={"center"}>
         <Link href="/" fontSize={"xl"} fontWeight={"500"}>
           شَـغَـفْ
         </Link>
@@ -46,24 +52,30 @@ function IntroDashboard() {
         </Button>
       </Flex>
 
-      <Flex mb={"2rem"} flexGrow={"1"}>
+      <Flex mb={"3rem"} mt={"auto"}>
         <Heading
-          mt={"10rem"}
+          mt={"2rem"}
           gap={"3"}
           display={"flex"}
           flexWrap={"wrap"}
           fontSize={"5xl"}
         >
-          أهلاً محمد
+          أهلاً {props.userName}
           <Emoji />
         </Heading>
       </Flex>
 
-      <Box flexGrow={"8"} w={"100%"}>
-        <GoalForm change={handleGoalInputChange} goalText={goalText} />
+      <Box mb={"auto"} w={"100%"}>
+        <GoalForm
+          renderUserGoals={props.renderUserGoals}
+          change={handleGoalInputChange}
+          goalText={goalText}
+        />
       </Box>
-
-      <Goal goalText={goalText} />
+      <Box mt={"1rem"}>
+        <Text mb={"0.8rem"}>هكذا سيعرض هدفك:</Text>
+        <Goal goalText={goalText} />
+      </Box>
     </Box>
   );
 }

@@ -9,11 +9,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 .cardWrapper{
   -webkit-overflow-scrolling: touch;
 }
-.cardWrapper::-webkit-scrollbar{
+.scrollDisable::-webkit-scrollbar{
   display: none;
 }
-.storke {
-  -webkit-text-stroke: 1px black;
-
+.scrollDisable{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
-

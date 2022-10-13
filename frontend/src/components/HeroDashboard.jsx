@@ -1,35 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Heading } from "@chakra-ui/react";
-import StatsBox from "../StatsBox";
-import { useStopwatch } from "react-timer-hook";
-import TableStats from "../TableStats";
+import StatsBox from "./StatsBox";
+// import { useStopwatch } from "react-timer-hook";
+import TableStats from "./TableStats";
+import GoalsGrid from "./GoalsGrid";
 
-function HeroDashboard() {
+function HeroDashboard(props) {
   const [statsData, setData] = useState({
     goalsNum: 27,
     goalsDone: 15,
     goalsRemain: 12,
   });
-  const { seconds, minutes } = useStopwatch({ autoStart: true });
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <Box mt={12} pr={7} flex={"70%"}>
+    <Box
+      pt={{ sm: 0, md: 12 }}
+      pr={7}
+      pl={7}
+      pb={7}
+      flex={"70%"}
+      overflow={{ md: "unset", lg: "scroll" }}
+    >
       <Heading fontWeight={"500"} fontSize={"3xl"}>
         الإحصائيات:
       </Heading>
-
       <Box
         mt={"4"}
         display={"flex"}
-        className={"cardWrapper"}
+        className={"scrollDisable cardWrapper"}
         flexWrap={"nowrap"}
         overflowX={"auto"}
         flexDirection={"row"}
         alignItems={"stretch"}
         gap={"7"}
-        pt={8}
-        pb={8}
+        p={8}
         borderRadius="25px"
       >
         <StatsBox
@@ -50,27 +55,23 @@ function HeroDashboard() {
           title={"الاهداف المتبقيه"}
           value={"12"}
         />
-        <StatsBox
-          icon={"⏰"}
-          color={"blue.100"}
-          title={"الوقت منذ الدخول"}
-          value={`${minutes}:${seconds}`}
-        />
       </Box>
-      <TableStats isOpen={isOpen} />
+
+      <TableStats isOpen={isOpen} userGoals={props.userGoals} />
+      <Button
+        onClick={() => {
+          setOpen((isOpen) => !isOpen);
+        }}
+      >
+        اظهر التقرير
+      </Button>
+
       <Box mt={5}>
         <Heading fontWeight={"500"} fontSize={"3xl"}>
           الأهداف:
         </Heading>
-        <Button
-          onClick={() => {
-            setOpen((isOpen) => !isOpen);
-          }}
-        >
-          اظهر التقرير
-        </Button>
-
         {/* Goals Component */}
+        <GoalsGrid userGoals={props.userGoals} />
       </Box>
     </Box>
   );

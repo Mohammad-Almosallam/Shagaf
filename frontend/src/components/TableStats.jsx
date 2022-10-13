@@ -22,7 +22,6 @@ function TableStats(props) {
         boxShadow={"0px 0px 60px -14px rgba(0,0,0,0.1)"}
         className="glass"
         bgColor={"white"}
-        ml={8}
         maxWidth={"100vw"}
       >
         <Table variant="simple" maxWidth={"100vw"}>
