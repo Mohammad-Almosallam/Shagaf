@@ -11,6 +11,8 @@ import {
 } from "@chakra-ui/react";
 
 function TableStats(props) {
+  const arrGoals = props.userGoals;
+
   return (
     <Collapse in={props.isOpen} animateOpacity>
       <TableContainer
@@ -29,21 +31,16 @@ function TableStats(props) {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>اصنع المحبه</Td>
-              <Td>2019</Td>
-              <Td isNumeric>14:24</Td>
-            </Tr>
-            <Tr>
-              <Td>feet</Td>
-              <Td>centimetres (cm)</Td>
-              <Td isNumeric>30.48</Td>
-            </Tr>
-            <Tr>
-              <Td>yards</Td>
-              <Td>metres (m)</Td>
-              <Td isNumeric>0.91444</Td>
-            </Tr>
+            {arrGoals.length > 0 &&
+              arrGoals.map((eachGoal) => {
+                return (
+                  <Tr key={eachGoal._id}>
+                    <Td>{eachGoal.text}</Td>
+                    <Td>{eachGoal.createdAt.substring(0, 10)}</Td>
+                    <Td isNumeric>{eachGoal.createdAt.substring(11, 16)}</Td>
+                  </Tr>
+                );
+              })}
           </Tbody>
         </Table>
       </TableContainer>

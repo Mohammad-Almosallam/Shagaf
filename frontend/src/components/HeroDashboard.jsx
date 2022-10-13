@@ -64,7 +64,7 @@ function HeroDashboard(props) {
           setOpen((isOpen) => !isOpen);
         }}
       >
-        اظهر التقرير
+        {isOpen ? "اخفاء التقرير المفصل" : "اظهار التقرير المفصل"}
       </Button>
       <TableStats isOpen={isOpen} userGoals={props.userGoals} />
 
@@ -72,7 +72,6 @@ function HeroDashboard(props) {
         <Heading fontWeight={"500"} mb={3} fontSize={"3xl"}>
           الأهداف:
         </Heading>
-        {/* Goals Component */}
         <GoalsGrid userGoals={props.userGoals} />
       </Box>
     </Box>

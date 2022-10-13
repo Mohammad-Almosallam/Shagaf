@@ -4,7 +4,6 @@ import Goal from "./Goal";
 
 function GoalsGrid(props) {
   const arrGoals = props.userGoals;
-  console.log(arrGoals);
 
   return (
     <SimpleGrid

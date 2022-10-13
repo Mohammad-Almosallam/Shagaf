@@ -24,6 +24,7 @@ function Goal(props) {
       alignItems={"center"}
       position={"relative"}
       border={"1px black solid"}
+      justifyContent={"center"}
     >
       <Box
         position={"absolute"}
@@ -40,7 +41,6 @@ function Goal(props) {
         <IoTrashOutline />
       </Box>
       <Text>{props.goalText}</Text>
-      <Text>{props.createdAt}</Text>
     </Box>
   );
 }
