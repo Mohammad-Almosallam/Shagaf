@@ -59,12 +59,22 @@ function Register() {
   }
 
   return (
-    <Flex width={"100%"} h={"100vh"} flexDir={"row-reverse"}>
-      <Box bg={"#FEF5ED"} width={"50%"}>
+    <Flex
+      width={"100%"}
+      h={"100vh"}
+      flexDir={{ md: "column", lg: "row-reverse" }}
+    >
+      <Box bg={"#FEF5ED"} display={{ sm: "none", lg: "block" }} width={"50%"}>
         <Spline scene="https://prod.spline.design/IW8nMmrQH9b-VJnB/scene.splinecode" />
       </Box>
-      <Box w={"50%"} margin={"auto"}>
-        <Flex flexDirection={"column"} p={"1"} m={"auto"} w={"400px"} gap={"2"}>
+      <Box w={{ sm: "100%", lg: "50%" }} margin={"auto"}>
+        <Flex
+          flexDirection={"column"}
+          p={"1"}
+          m={"auto"}
+          w={{ sm: "300px", md: "400px" }}
+          gap={"2"}
+        >
           <Heading display={"flex"} gap={"2"} alignItems={"center"} mb={"5"}>
             <IoPersonOutline /> تسجيل حساب جديد
           </Heading>
