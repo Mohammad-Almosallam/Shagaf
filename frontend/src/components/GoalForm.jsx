@@ -11,7 +11,7 @@ function GoalForm(props) {
    */
   async function handleGoalSubmit(e) {
     e.preventDefault();
-
+    props.setGoalText("");
     //Get user token
     const token = JSON.parse(localStorage.getItem("user")).token;
 

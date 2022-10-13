@@ -57,17 +57,19 @@ function HeroDashboard(props) {
         />
       </Box>
 
-      <TableStats isOpen={isOpen} userGoals={props.userGoals} />
       <Button
+        mb={"2"}
+        width={"100%"}
         onClick={() => {
           setOpen((isOpen) => !isOpen);
         }}
       >
         اظهر التقرير
       </Button>
+      <TableStats isOpen={isOpen} userGoals={props.userGoals} />
 
       <Box mt={5}>
-        <Heading fontWeight={"500"} fontSize={"3xl"}>
+        <Heading fontWeight={"500"} mb={3} fontSize={"3xl"}>
           الأهداف:
         </Heading>
         {/* Goals Component */}

@@ -52,7 +52,7 @@ function IntroDashboard(props) {
         </Button>
       </Flex>
 
-      <Flex mb={"3rem"} mt={"auto"}>
+      <Flex mt={"auto"}>
         <Heading
           mt={"2rem"}
           gap={"3"}
@@ -69,6 +69,7 @@ function IntroDashboard(props) {
         <GoalForm
           renderUserGoals={props.renderUserGoals}
           change={handleGoalInputChange}
+          setGoalText={setGoalText}
           goalText={goalText}
         />
       </Box>

@@ -1,14 +1,18 @@
 import React from "react";
-import { Box, Text, Button, Flex, Heading, Link } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { IoTrashOutline } from "react-icons/io5";
+import { useWindowWidth } from "@react-hook/window-size";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 
 function Goal(props) {
+  //This is get current window width to enable aos animation only mobile/ipad view
+  const windowWidth = useWindowWidth();
+
   AOS.init();
   return (
     <Box
-      data-aos={"fade-down"}
+      data-aos={windowWidth < 1160 ? "fade-down" : ""}
       className={"glass scrollDisable"}
       overflow={"scroll"}
       p={"1rem"}

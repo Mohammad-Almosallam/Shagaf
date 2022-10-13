@@ -4,14 +4,10 @@ import {
   Thead,
   Tbody,
   Collapse,
-  Button,
   Tr,
   Th,
-  Box,
   Td,
-  TableCaption,
   TableContainer,
-  Container,
 } from "@chakra-ui/react";
 
 function TableStats(props) {
