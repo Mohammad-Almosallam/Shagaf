@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { IoTrashOutline } from "react-icons/io5";
 import { useWindowWidth } from "@react-hook/window-size";
+
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 
@@ -37,6 +38,10 @@ function Goal(props) {
         justifyContent={"center"}
         alignItems={"center"}
         width={"30px"}
+        cursor={"pointer"}
+        onClick={(e) => {
+          props.onDelete(props.id, e);
+        }}
       >
         <IoTrashOutline />
       </Box>

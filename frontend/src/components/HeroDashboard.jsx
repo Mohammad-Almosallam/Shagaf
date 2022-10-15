@@ -72,7 +72,10 @@ function HeroDashboard(props) {
         <Heading fontWeight={"500"} mb={3} fontSize={"3xl"}>
           الأهداف:
         </Heading>
-        <GoalsGrid userGoals={props.userGoals} />
+        <GoalsGrid
+          userGoals={props.userGoals}
+          renderUserGoals={props.renderUserGoals}
+        />
       </Box>
     </Box>
   );

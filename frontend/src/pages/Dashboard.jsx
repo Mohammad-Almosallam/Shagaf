@@ -15,7 +15,6 @@ function Dashboard() {
     if (!user) {
       navigate("/login");
     }
-    console.log("User");
   }, [user, navigate]);
 
   /* It's rendering the user goals only once at the beginning. */
@@ -31,7 +30,6 @@ function Dashboard() {
     if (user) {
       const token = JSON.parse(localStorage.getItem("user")).token;
       const goals = await getGoals(token);
-      console.log(goals);
       setUserGoals(goals.data);
     }
   }
@@ -48,7 +46,7 @@ function Dashboard() {
         userName={user && user.name}
         renderUserGoals={renderUserGoals}
       />
-      <HeroDashboard userGoals={userGoals} />
+      <HeroDashboard userGoals={userGoals} renderUserGoals={renderUserGoals} />
     </Flex>
   );
 }

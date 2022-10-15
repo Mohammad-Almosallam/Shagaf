@@ -31,4 +31,19 @@ const getGoals = async (token) => {
     return err.response;
   }
 };
-export { createGoal, getGoals };
+
+const deleteGoal = async (goalId, token) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await axios.delete(API_URL + goalId, config);
+
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+};
+export { createGoal, getGoals, deleteGoal };
